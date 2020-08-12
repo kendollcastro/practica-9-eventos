@@ -8,7 +8,23 @@ function kendollcolors(){
     let z = Math.floor(Math.random() * (numeromax - numeromin)+ numeromin);
     return `rgb(${x},${y},${z})`;
 }
-for(let i = 0; i < elemento.length; i++) {
-    elemento[i].style.color = kendollcolors();
+ let parrafos = document.querySelectorAll('p');
+
+function colorNegro(event){
+    const parrafos = event.currentTarget;
+    parrafos.style.color = 'black';
+    return parrafos
 }
-console.log(kendollcolors());
+
+function cambioColor(event){
+    const parrafos = event.currentTarget;
+    parrafos.style.color = kendollcolors();
+    return parrafos
+
+}
+
+for(let i = 0; i < elemento.length; i++) {
+    parrafos[i].addEventListener ('mouseenter', cambioColor);
+    parrafos[i].addEventListener ('mouseleave', colorNegro);
+
+}
